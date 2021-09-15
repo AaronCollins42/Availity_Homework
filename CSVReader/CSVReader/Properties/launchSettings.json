@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSVReader": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\Aaron\\projects\\Availity_Homework\\CSVReader\\test.csv"
+    }
+  }
+}
