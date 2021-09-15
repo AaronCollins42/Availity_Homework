@@ -1,0 +1,54 @@
+  <!DOCTYPE html>
+<html lang="en-US">
+<head>
+<link rel="stylesheet" type="text/css" href="Registration.css" media=”screen” />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+
+    <div ng-app="myApp" ng-controller="formCtrl">
+        <form name="myForm">
+            First Name:<br/>
+            <input type="text" name="firstname" ng-model="user.firstName" required/>
+			<span ng-show="myForm.firstname.$touched && myForm.firstname.$invalid">first name is required.</span> <br /><br/>
+            Last Name:<br/>
+            <input type="text" name="lastname" ng-model="user.lastName" required/>
+			<span ng-show="myForm.lastname.$touched && myForm.lastname.$invalid">last name is required.</span><br /><br/>
+            NPI number<br/>
+			<input type="text" name="npi" ng-model="user.npi" minlength="10" maxlength="10" required/>
+			<span ng-show="myForm.npi.$touched && myForm.npi.$invalid">NPI number is required.</span><br /><br/>
+			Business Address<br/>
+			<div id="address">
+				Address Line 1<br/>
+				<input type="text" name="addr1" ng-model="user.addr.line1" required/><br /><br/>
+				Address Line 2<br/>
+				<input type="text" ng-model="user.addr.line2" /><br /><br/>
+				City
+				<input type="text" name="city" ng-model="user.addr.city" required/>
+				State
+				<input type="text" name="state" ng-model="user.addr.state" required/>
+				Zip
+				<input type="text" name="zip" ng-model="user.addr.zip" required/>
+				<br /><br/>
+			</div>
+			Telephone Number<br/>
+			<input type="text" ng-model="user.phone" required/><br /><br/>
+			Email address
+			<input type="text" ng-model="user.email" required/><br /><br/>
+			<br/><br/>
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+
+</body>
+</html> 
+ 
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+  $scope.submit = function() {
+  };
+  $scope.submit();
+});
+</script> 
