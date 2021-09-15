@@ -1,54 +1,52 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
-<link rel="stylesheet" type="text/css" href="Registration.css" media=”screen” />
+<link rel="stylesheet" type="text/css" href="Registration.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <body>
 
-    <div ng-app="myApp" ng-controller="formCtrl">
-        <form name="myForm">
-            First Name:<br/>
+    <div id="form-body" ng-app="myApp" ng-controller="formCtrl">
+		<h2>Register</h2>
+        <form name="myForm" ng-model="myForm">
+            First Name*<br/>
             <input type="text" name="firstname" ng-model="user.firstName" required/>
-			<span ng-show="myForm.firstname.$touched && myForm.firstname.$invalid">first name is required.</span> <br /><br/>
-            Last Name:<br/>
+			<span ng-show="myForm.firstname.$touched && myForm.firstname.$invalid">Required.</span> <br /><br/>
+            Last Name*<br/>
             <input type="text" name="lastname" ng-model="user.lastName" required/>
-			<span ng-show="myForm.lastname.$touched && myForm.lastname.$invalid">last name is required.</span><br /><br/>
-            NPI number<br/>
-			<input type="text" name="npi" ng-model="user.npi" minlength="10" maxlength="10" required/>
-			<span ng-show="myForm.npi.$touched && myForm.npi.$invalid">NPI number is required.</span><br /><br/>
-			Business Address<br/>
+			<span ng-show="myForm.lastname.$touched && myForm.lastname.$invalid">Required.</span><br /><br/>
+            NPI number*<br/>
+			<input type="text" name="npi" ng-model="user.npi" pattern="[0-9]{10}" required/>
+			<span ng-show="myForm.npi.$touched && myForm.npi.$invalid">10 digit NPI number required.</span><br /><br/>
 			<div id="address">
-				Address Line 1<br/>
-				<input type="text" name="addr1" ng-model="user.addr.line1" required/><br /><br/>
-				Address Line 2<br/>
-				<input type="text" ng-model="user.addr.line2" /><br /><br/>
-				City
-				<input type="text" name="city" ng-model="user.addr.city" required/>
-				State
-				<input type="text" name="state" ng-model="user.addr.state" required/>
-				Zip
-				<input type="text" name="zip" ng-model="user.addr.zip" required/>
-				<br /><br/>
+				<h4>Business Address*</h4>
+				<div class="inline">Address Line 1
+				<input type="text" name="addr1" ng-model="user.addr.line1" required/><span ng-show="user.addr.line1.addr1.$touched && user.addr.line1.$invalid">Required.</span></div>
+				<div class="inline">Address Line 2 
+				<input type="text" ng-model="user.addr.line2" /></div></br>
+				<div class="inline">City
+				<input type="text" name="city" ng-model="user.addr.city" required/><span ng-show="myForm.city.$touched && myForm.city.$invalid">Required.</span></div>
+				<div class="inline">State
+				<input type="text" id="state" name="state" ng-model="user.addr.state" required/><span ng-show="myForm.state.$touched && myForm.state.$invalid">Required.</span></div>
+				<div class="inline">Zip
+				<input type="text" id="zip" name="zip" ng-model="user.addr.zip" required/><span ng-show="myForm.zip.$touched && myForm.zip.$invalid">Required.</span></div>
 			</div>
-			Telephone Number<br/>
-			<input type="text" ng-model="user.phone" required/><br /><br/>
-			Email address
-			<input type="text" ng-model="user.email" required/><br /><br/>
+			Telephone Number*<br/>
+			<input type="text" name="phone" ng-model="user.phone" required/>
+			<span ng-show="myForm.phone.$touched && myForm.phone.$invalid">Required</span><br /><br/>
+			Email address*
+			<input type="email" name="email" ng-model="user.email" required/>
+			<span ng-show="myForm.email.$touched && myForm.email.$invalid">Required</span><br /><br/>
 			<br/><br/>
             <input type="submit" value="Submit"/>
         </form>
     </div>
-
-</body>
-</html> 
- 
-
 <script>
 var app = angular.module('myApp', []);
 app.controller('formCtrl', function($scope) {
-  $scope.submit = function() {
-  };
-  $scope.submit();
 });
-</script> 
+</script>
+</body>
+</html>
+

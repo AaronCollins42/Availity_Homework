@@ -8,7 +8,7 @@
 2. Tell me about something you have read recently that you would recommend and why. (Can be a Github
 Repo, Article, Blog, Book, etc)
 
-*As far as professional reading materials I would probably recommend w3schools coding tutorials because I have found them to be a quick way to get comfortable with new coding languages
+*As far as professional reading materials I would probably recommend w3schools coding tutorials because I have found them to be a quick way to get comfortable with new coding languages and to reference the things I need. Specifically I recently used the angular tutorials
 
 
 3. How would you explain to your grandmother what Availity does?
@@ -30,6 +30,8 @@ electronically join Availity. The following data points should be collected:
  Business Address
  Telephone Number
  Email address
+
+*Found in AngularRegistration folder
 
 6. Coding exercise (using C#): Availity receives enrollment files from various benefits management and
 enrollment solutions (I.e. HR platforms, payroll platforms).  Most of these files are typically in EDI format. 
