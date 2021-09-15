@@ -20,7 +20,7 @@ Repo, Article, Blog, Book, etc)
 code. Write a program which takes in a string as an input and returns true if all the parentheses in the
 string are properly closed and nested.
 
-*Found in LispChecker Folder
+*Found in LispChecker Folder with visual studio solution
 
 5. Coding exercise (using Angular, React, or a JavaScript framework of your choice): Healthcare providers
 request to be part of the Availity system. Create a registration user interface so healthcare providers can
@@ -43,6 +43,9 @@ following data points are included in the file:
  Version (integer)
  Insurance Company (string)
 
+*Found in CSVReader folder
+
+
 7. This database diagram is to be used for the questions that follow:
 Customer
 PKCustID
@@ -64,9 +67,31 @@ Quantity
 a. Write a SQL query that will produce a reverse-sorted list (alphabetically by name) of customers (first
 and last names) whose last name begins with the letter ‘S.’
 
-© Availity, LLC, all rights reserved. | Confidential and proprietary.
-Page 2 of 2 | Updated 9/14/2021
+SELECT *
+FROM Customer AS c 
+WHERE LastName LIKE 'S%' ORDER BY LastName DESC, FirstName DESC
+
+*or swap first and last name in order by if you want it to sort by first name first I just thought last name first maked more sense
+
+
+
 b. Write a SQL query that will show the total value of all orders each customer has placed in the past
 six months. Any customer without any orders should show a $0 value.
+
+SELECT  c.CustID, c.FirstName, c.LastName, SUM(CASE WHEN o.OrderDate > DATEADD(m, -6, GetDate()) THEN ol.Cost * ol.Quantity ELSE 0 END) AS TotalValue
+FROM Customer AS c
+LEFT JOIN Orders AS o ON o.CustomerID = c.CustID
+LEFT JOIN OrderLine AS ol ON o.OrderID = ol.OrderLineID
+GROUP BY c.CustID, c.FirstName, c.LastName
+
+
+
 c. Amend the query from the previous question to only show those customers who have a total order
 value of more than $100 and less than $500 in the past six months.
+
+SELECT  c.CustID, c.FirstName, c.LastName, SUM(CASE WHEN o.OrderDate > DATEADD(m, -6, GetDate()) THEN ol.Cost * ol.Quantity ELSE 0 END) AS TotalValue
+FROM Customer AS c
+LEFT JOIN Orders AS o ON o.CustomerID = c.CustID
+LEFT JOIN OrderLine AS ol ON o.OrderID = ol.OrderLineID
+GROUP BY c.CustID, c.FirstName, c.LastName
+HAVING SUM(CASE WHEN o.OrderDate > DATEADD(m, -6, GetDate()) THEN ol.Cost * ol.Quantity ELSE 0 END) > 100 AND SUM(CASE WHEN o.OrderDate > DATEADD(m, -6, GetDate()) THEN ol.Cost * ol.Quantity ELSE 0 END) < 500
